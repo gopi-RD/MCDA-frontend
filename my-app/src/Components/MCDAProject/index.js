@@ -62,41 +62,41 @@ class MCDAProject extends Component {
     // Social Criteria Pairwise Comparison Handlers
     //First row Worker safety and health vs other 4 social criteria
     onEnterWSvsCDRating=(event)=>{
-        this.setState({WSvsCD:event.target.value,CDvsWS:(1/event.target.value),isWSvsCD:false})
+        this.setState({WSvsCD:event.target.value,CDvsWS:(parseFloat(1/event.target.value)).toFixed(3),isWSvsCD:false})
     }
     onEnterWSvsSDRating=(event)=>{
-        this.setState({WSvsSD:event.target.value,SDvsWS:(1/event.target.value),isWSvsSD:false})
+        this.setState({WSvsSD:event.target.value,SDvsWS:(parseFloat(1/event.target.value).toFixed(3)),isWSvsSD:false})
     }
     onEnterWSvsJCRating=(event)=>{
-        this.setState({WSvsJC:event.target.value,JCvsWS:(1/event.target.value),isWSvsJC:false})
+        this.setState({WSvsJC:event.target.value,JCvsWS:parseFloat(1/event.target.value).toFixed(3),isWSvsJC:false})
     }
     onEnterWSvsPARating=(event)=>{
-        this.setState({WSvsPA:event.target.value,PAvsWS:(1/event.target.value),isWSvsPA:false })
+        this.setState({WSvsPA:event.target.value,PAvsWS:parseFloat(1/event.target.value).toFixed(3),isWSvsPA:false })
     }
 
     //Second row Community disruption vs other 4 social criteria
     
     onEnterCDvsJCRating=(event)=>{
-        this.setState({CDvsJC:event.target.value,JCvsCD:(1/event.target.value),isCDvsJC:false })
+        this.setState({CDvsJC:event.target.value,JCvsCD:parseFloat(1/event.target.value).toFixed(3),isCDvsJC:false })
     }
     onEnterCDvsSDRating=(event)=>{
-        this.setState({CDvsSD:event.target.value,SDvsCD:(1/event.target.value),isCDvsSD:false })
+        this.setState({CDvsSD:event.target.value,SDvsCD:parseFloat(1/event.target.value).toFixed(3),isCDvsSD:false })
     }
     onEnterCDvsPARating=(event)=>{
-        this.setState({CDvsPA:event.target.value,PAvsCD:(1/event.target.value),isCDvsPA:false })
+        this.setState({CDvsPA:event.target.value,PAvsCD:parseFloat(1/event.target.value).toFixed(3),isCDvsPA:false })
     }
 
     //Third row Job creation vs other 4 social criteria
     
     onEnterJCvsSDRating=(event)=>{
-        this.setState({JCvsSD:event.target.value,SDvsJC:(1/event.target.value),isJCvsSD:false })
+        this.setState({JCvsSD:event.target.value,SDvsJC:parseFloat(1/event.target.value).toFixed(3),isJCvsSD:false })
     }
     onEnterJCvsPARating=(event)=>{
-        this.setState({JCvsPA:event.target.value,PAvsJC:(1/event.target.value),isJCvsPA:false })
+        this.setState({JCvsPA:event.target.value,PAvsJC:parseFloat(1/event.target.value).toFixed(3),isJCvsPA:false })
     }
     // The handlers for the remaining pairwise comparisons (Skill development and Public acceptance) will be implemented similarly, ensuring that the reciprocal values are automatically calculated and stored in the state.
     onEnterSDvsPARating=(event)=>{
-        this.setState({SDvsPA:event.target.value,PAvsSD:(1/event.target.value),isSDvsPA:false })
+        this.setState({SDvsPA:event.target.value,PAvsSD:parseFloat(1/event.target.value).toFixed(3),isSDvsPA:false })
     }
     
     onSocialConsistencyRatioCheck=()=>{
@@ -184,41 +184,41 @@ class MCDAProject extends Component {
     // Economic Criteria Pairwise Comparison Handlers will be implemented similarly to the social criteria handlers, ensuring that the reciprocal values are automatically calculated and stored in the state.
         // First row Construction cost vs other 4 economic criteria
     onEnterICvsCSRating=(event)=>{
-        this.setState({ICvsCS:event.target.value,CSvsIC:(1/event.target.value),isICvsCS:false })
+        this.setState({ICvsCS:event.target.value,CSvsIC:parseFloat(1/event.target.value).toFixed(3),isICvsCS:false })
     }
     onEnterICvsWCRating=(event)=>{
-        this.setState({ICvsWC:event.target.value,WCvsIC:(1/event.target.value),isICvsWC:false })
+        this.setState({ICvsWC:event.target.value,WCvsIC:parseFloat(1/event.target.value).toFixed(3),isICvsWC:false })
     }
     onEnterICvsLCCRating=(event)=>{
-        this.setState({ICvsLCC:event.target.value,LCCvsIC:(1/event.target.value),isICvsLCC:false })
+        this.setState({ICvsLCC:event.target.value,LCCvsIC:parseFloat(1/event.target.value).toFixed(3),isICvsLCC:false })
     }
     onEnterICvsMCCRating=(event)=>{
-        this.setState({ICvsMCC:event.target.value,MCCvsIC:(1/event.target.value),isICvsMCC:false })
+        this.setState({ICvsMCC:event.target.value,MCCvsIC:parseFloat(1/event.target.value).toFixed(3),isICvsMCC:false })
     }
 
     // second row Construction speed vs other 4 economic criteria
 
     onEnterCSvsWCRating=(event)=>{
-        this.setState({CSvsWC:event.target.value,WCvsCS:(1/event.target.value),isCSvsWC:false })
+        this.setState({CSvsWC:event.target.value,WCvsCS:parseFloat(1/event.target.value).toFixed(3),isCSvsWC:false })
     }
 
     onEnterCSvsLCCRating=(event)=>{
-        this.setState({CSvsLCC:event.target.value,LCCvsCS:(1/event.target.value),isCSvsLCC:false })
+        this.setState({CSvsLCC:event.target.value,LCCvsCS:parseFloat(1/event.target.value).toFixed(3),isCSvsLCC:false })
     }
     onEnterCSvsMCCRating=(event)=>{
-        this.setState({CSvsMCC:event.target.value,MCCvsCS:(1/event.target.value),isCSvsMCC:false })
+        this.setState({CSvsMCC:event.target.value,MCCvsCS:parseFloat(1/event.target.value).toFixed(3),isCSvsMCC:false })
     }
 
     // third row of workfoce cost vs other 4 economic criteria
     onEnterWCvsLCCRating=(event)=>{
-        this.setState({WCvsLCC:event.target.value,LCCvsWC:(1/event.target.value),isWCvsLCC:false })
+        this.setState({WCvsLCC:event.target.value,LCCvsWC:parseFloat(1/event.target.value).toFixed(3),isWCvsLCC:false })
     }
     onEnterWCvsMCCRating=(event)=>{
-        this.setState({WCvsMCC:event.target.value,MCCvsWC:(1/event.target.value),isWCvsMCC:false })
+        this.setState({WCvsMCC:event.target.value,MCCvsWC:parseFloat(1/event.target.value).toFixed(3),isWCvsMCC:false })
     }
     // fourth row of Life Cycle Cost vs other 4 economic criteria
     onEnterLCCvsMCCRating=(event)=>{
-        this.setState({LCCvsMCC:event.target.value,MCCvsLCC:(1/event.target.value),isLCCvsMCC:false })
+        this.setState({LCCvsMCC:event.target.value,MCCvsLCC:parseFloat(1/event.target.value).toFixed(3),isLCCvsMCC:false })
     }
 
     onEconomicConsistencyRatioCheck=()=>{
@@ -294,37 +294,37 @@ class MCDAProject extends Component {
     // Environmental Criteria onChanges events 
     // first row events
     onEnterCMvsCWGRating=(event)=>{
-        this.setState({CMvsCWG:event.target.value,CWGvsCM:(1/event.target.value),isCMvsCWG:false })
+        this.setState({CMvsCWG:event.target.value,CWGvsCM:parseFloat(1/event.target.value).toFixed(3),isCMvsCWG:false })
     }
     onEnterCMvsECRating=(event)=>{
-        this.setState({CMvsEC:event.target.value,ECvsCM:(1/event.target.value),isCMvsEC:false })
+        this.setState({CMvsEC:event.target.value,ECvsCM:parseFloat(1/event.target.value).toFixed(3),isCMvsEC:false })
     }   
     onEnterCMvsWURating=(event)=>{
-        this.setState({CMvsWU:event.target.value,WUvsCM:(1/event.target.value),isCMvsWU:false })
+        this.setState({CMvsWU:event.target.value,WUvsCM:parseFloat(1/event.target.value).toFixed(3),isCMvsWU:false })
     }
     onEnterCMvsLDRating=(event)=>{
-        this.setState({CMvsLD:event.target.value,LDvsCM:(1/event.target.value),isCMvsLD:false })
+        this.setState({CMvsLD:event.target.value,LDvsCM:parseFloat(1/event.target.value).toFixed(3),isCMvsLD:false })
     }
     // second row events
     onEnterCWGvsECRating=(event)=>{
-        this.setState({CWGvsEC:event.target.value,ECvsCWG:(1/event.target.value),isCWGvsEC:false }) 
+        this.setState({CWGvsEC:event.target.value,ECvsCWG:parseFloat(1/event.target.value).toFixed(3),isCWGvsEC:false }) 
     }
     onEnterCWGvsWURating=(event)=>{
-        this.setState({CWGvsWU:event.target.value,WUvsCWG:(1/event.target.value),isCWGvsWU:false }) 
+        this.setState({CWGvsWU:event.target.value,WUvsCWG:parseFloat(1/event.target.value).toFixed(3),isCWGvsWU:false }) 
     }
     onEnterCWGvsLDRating=(event)=>{
-        this.setState({CWGvsLD:event.target.value,LDvsCWG:(1/event.target.value),isCWGvsLD:false }) 
+        this.setState({CWGvsLD:event.target.value,LDvsCWG:parseFloat(1/event.target.value).toFixed(3),isCWGvsLD:false }) 
     }
     // third row events
     onEnterECvsWURating=(event)=>{
-        this.setState({ECvsWU:event.target.value,WUvsEC:(1/event.target.value),isECvsWU:false }) 
+        this.setState({ECvsWU:event.target.value,WUvsEC:parseFloat(1/event.target.value).toFixed(3),isECvsWU:false }) 
     }   
     onEnterECvsLDRating=(event)=>{
-        this.setState({ECvsLD:event.target.value,LDvsEC:(1/event.target.value),isECvsLD:false }) 
+        this.setState({ECvsLD:event.target.value,LDvsEC:parseFloat(1/event.target.value).toFixed(3),isECvsLD:false }) 
     }
     // fourth row events
     onEnterWUvsLDRating=(event)=>{
-        this.setState({WUvsLD:event.target.value,LDvsWU:(1/event.target.value),isWUvsLD:false }) 
+        this.setState({WUvsLD:event.target.value,LDvsWU:parseFloat(1/event.target.value).toFixed(3),isWUvsLD:false }) 
     }
 
     // Environmental Criteria Consistency Ratio Check Logic 
@@ -718,20 +718,7 @@ class MCDAProject extends Component {
             yearsOfExperience:experience,
             qualification:qualifications,
         } 
-        console.log(userDetails)
-        // send the UserProfile Details API request
-        const url=`https://mcda-project-f09a.onrender.com/api/userProfile`
-        console.log(url)
-        const options={
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json"
-            },
-            body:JSON.stringify(userDetails)
-        }
-        const response=await fetch(url,options);
-        const data=await response.json();
-        console.log(data)   
+
         // validating the consistency of the pairwise comparison matrices for social, economic, and environmental criteria
         if ( (WSvsCD==="" || WSvsJC==="" ||  WSvsSD==="" || WSvsPA==="" || CDvsJC==="" || CDvsSD==="" || CDvsPA==="" || JCvsSD==="" || JCvsPA==="" || SDvsPA==="")){
                 this.setState({isErr:true,isErrorMsg:"Please ensure all pairwise comparison values for social criteria are entered."})
@@ -1160,24 +1147,7 @@ class MCDAProject extends Component {
                 ]
             }
 
-           
-
-        // send the Pairwise Criteria  Details API request
-        const urlAddCriteria=`https://mcda-project-f09a.onrender.com/api/add-criteria` 
-        const criteriaOptions={
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json"
-            },
-            body:JSON.stringify({data:[workerSafetyData,communityData,jobData,skillData,publicData,initialCE,ConstructionSE,workforceCE,MaintenanceCE,MaterialCE,carbonE,wasteE,energyE,waterE,landE]})
-        }
-        const responseCriteria=await fetch(urlAddCriteria,criteriaOptions);
-        const criteriaMessage=await responseCriteria.json();
-        console.log(criteriaMessage)  
-         
-
-
-               
+             
             // validating of construction methods scores against criteria to ensure they are between 1 and 9
             if ( (CVvsWS==="" || CVvsCD==="" || CVvsJC==="" || CVvsSD==="" || CVvsPA==="" || CVvsIC==="" || CVvsCS==="" || CVvsWC==="" || CVvsLCC==="" || CVvsMCC==="" || CVvsCM==="" || CVvsCWG==="" || CVvsEC==="" || CVvsWU==="" || CVvsLD==="")){
                 this.setState({isErr:true,isErrorMsg:"Please ensure all scores for conventional method are entered."})
@@ -1555,6 +1525,33 @@ class MCDAProject extends Component {
                 ]
             }
 
+            // send the UserProfile Details API request
+             const url=`https://mcda-project-f09a.onrender.com/api/userProfile`
+             console.log(url)
+             const options={
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify(userDetails)
+        }
+        const response=await fetch(url,options);
+        const data=await response.json();
+        console.log(data)   
+
+            // send the Pairwise Criteria  Details API request
+             const urlAddCriteria=`https://mcda-project-f09a.onrender.com/api/add-criteria` 
+             const criteriaOptions={
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({data:[workerSafetyData,communityData,jobData,skillData,publicData,initialCE,ConstructionSE,workforceCE,MaintenanceCE,MaterialCE,carbonE,wasteE,energyE,waterE,landE]})
+        }
+        const responseCriteria=await fetch(urlAddCriteria,criteriaOptions);
+        const criteriaMessage=await responseCriteria.json();
+        console.log(criteriaMessage)  
+
             // send the Pairwise Criteria  Details API request
         const urlOfAddMethods=`https://mcda-project-f09a.onrender.com/api/addConstruction` 
         const optionsCM={
@@ -1650,13 +1647,32 @@ class MCDAProject extends Component {
                         <div>
                             <h3>Section 2</h3>
                             <h1>Pairwise Comparison</h1>
-                            <p>This section generates the AHP Pairwise Comparison Matrices required to compute criteria weights. It is the most mathematically critical section of the survey. The data from 23 pairwise questions (3 main + 10 Social + 10 Economic + 10 Environmental) is used to build reciprocal matrices, compute eigenvectors (priority weights), and verify logical consistency through the Consistency Ratio (CR less than 0.10). Without these weights, TOPSIS and VIKOR cannot be applied.</p>
+                            <p>This section generates the AHP Pairwise Comparison Matrices required to compute criteria weights. It is the most mathematically critical section of the survey. The data from pairwise questions ( Social ,  Economic , Environmental) is used to build reciprocal matrices, compute eigenvectors (priority weights), and verify logical consistency through the Consistency Ratio (CR less than 0.10).
+
+                            </p>
                             <h3>AHP SCALE REFERENCE </h3>
-                                <p>   1 = Equally important  |  2 = Weakly between equal and moderate  |  3 = Moderately more important  |  4 = Moderately to strongly  |  5 = Strongly more important  |  6 = Strongly to very strongly  |  7 = Very strongly more important  |  8 = Very to extremely strongly  |  9 = Extremely more important  Instruction to experts: If Criterion A is 5x more important than Criterion B, select 5 in the row 'A vs B'. The reciprocal value (1/5) is automatically entered in the matrix for 'B vs A'.
+                                <p>   1 = Equally important  |  2 = Weakly between equal and moderate  |  3 = Moderately more important  |  4 = Moderately to strongly  |  5 = Strongly more important  |  6 = Strongly to very strongly  |  7 = Very strongly more important  |  8 = Very to extremely strongly  |  9 = Extremely more important  Instruction to experts: 
+                                    <span className="ahp-info-title">If Criterion A is 5x more important than Criterion B, select 5 in the row 'A vs B'. The reciprocal value (1/5) is automatically entered in the matrix for 'B vs A'.</span>
                             </p>
                             <div>
                                 <h1 >Social Criteria</h1>
                                 <div>
+                                    <div className="cr-container">
+                                    <h2 className="cr-title">⚙️ Consistency Check</h2>
+
+                                    <p className="cr-note">
+                                        After entering all values, click on the <span>Generate</span> button.
+                                    </p>
+
+                                    <div className="cr-rules">
+                                        <p className="cr-valid">
+                                        ✔ If Consistency Ratio (CR) &lt; 0.10 (10%), you can proceed to submit.
+                                        </p>
+                                        <p className="cr-invalid">
+                                        ❌ If CR ≥ 0.10, please revise your inputs to improve consistency.
+                                        </p>
+                                    </div>
+                                    </div>
                                     <span className="yellow-box"></span>
                                     <p className="yellow-box-text">Yellow Color place only enter values 1-9</p>
                                 </div>
@@ -1790,7 +1806,16 @@ class MCDAProject extends Component {
                                         </div>
                                     </div>
                                   </div> 
-                                  <div className="cr-container">
+                                     
+                                    <button className="generate-button" type="button" onClick={this.onSocialConsistencyRatioCheck} >
+                                    Generate 
+                                    </button>
+                                    {isGenerate && <p className="success-text">{CR<0.1?`The matrix is consistent: ${CR}= ${CR*100}% ,CR < 0.1 or 10%`:`${CR}=${CR*100}% The matrix is not consistent :Revise the ratings,CR < 0.1 or 10%`}</p>}
+                                </div>
+                            </div>
+                            <div>
+                                <h1 >Economic Criteria</h1>
+                                <div className="cr-container">
                                     <h2 className="cr-title">⚙️ Consistency Check</h2>
 
                                     <p className="cr-note">
@@ -1805,15 +1830,7 @@ class MCDAProject extends Component {
                                         ❌ If CR ≥ 0.10, please revise your inputs to improve consistency.
                                         </p>
                                     </div>
-                                    </div>   
-                                    <button className="generate-button" type="button" onClick={this.onSocialConsistencyRatioCheck} >
-                                    Generate 
-                                    </button>
-                                    {isGenerate && <p className="success-text">{CR<0.1?`The matrix is consistent: ${CR}= ${CR*100}% ,CR < 0.1 or 10%`:`${CR}=${CR*100}% The matrix is not consistent :Revise the ratings,CR < 0.1 or 10%`}</p>}
-                                </div>
-                            </div>
-                            <div>
-                                <h1 >Economic Criteria</h1>
+                                    </div>
                                 <div>
                                     <span className="green-box"></span>
                                     <p className="green-box-text">Green Color place only enter values 1-9</p>
@@ -1947,23 +1964,7 @@ class MCDAProject extends Component {
                                         </div>
                                      
                                   </div>  
-                                    <div className="cr-container">
-                                        <h2 className="cr-title">⚙️ Consistency Check</h2>
-
-                                        <p className="cr-note">
-                                            After entering all values, click on the <span>Generate</span> button.
-                                        </p>
-
-                                        <div className="cr-rules">
-                                            <p className="cr-valid">
-                                            ✔ If Consistency Ratio (CR) &lt; 0.10 (10%), you can proceed to submit.
-                                            </p>
-
-                                            <p className="cr-invalid">
-                                            ❌ If CR ≥ 0.10, please revise your inputs to improve consistency.
-                                            </p>
-                                        </div>
-                                        </div>  
+                                    
                                     <button className="generate-button" type="button" onClick={this.onEconomicConsistencyRatioCheck} >
                                     Generate 
                                     </button>
@@ -1973,6 +1974,22 @@ class MCDAProject extends Component {
                             </div>
                              <div>
                                 <h1 >Environmental Criteria</h1>
+                                <div className="cr-container">
+                                    <h2 className="cr-title">⚙️ Consistency Check</h2>
+
+                                    <p className="cr-note">
+                                        After entering all values, click on the <span>Generate</span> button.
+                                    </p>
+
+                                    <div className="cr-rules">
+                                        <p className="cr-valid">
+                                        ✔ If Consistency Ratio (CR) &lt; 0.10 (10%), you can proceed to submit.
+                                        </p>
+                                        <p className="cr-invalid">
+                                        ❌ If CR ≥ 0.10, please revise your inputs to improve consistency.
+                                        </p>
+                                    </div>
+                                    </div>
                                 <div>
                                     <span className="blue-box"></span>
                                     <p className="blue-box-text">Blue Color place only enter values 1-9</p>
@@ -2112,23 +2129,7 @@ class MCDAProject extends Component {
                                         
                                     </div>
                                   </div>  
-                                  <div className="cr-container">
-                                    <h2 className="cr-title">⚙️ Consistency Check</h2>
-
-                                    <p className="cr-note">
-                                        After entering all values, click on the <span>Generate</span> button.
-                                    </p>
-
-                                    <div className="cr-rules">
-                                        <p className="cr-valid">
-                                        ✔ If Consistency Ratio (CR) &lt; 0.10 (10%), you can proceed to submit.
-                                        </p>
-
-                                        <p className="cr-invalid">
-                                        ❌ If CR ≥ 0.10, please revise your inputs to improve consistency.
-                                        </p>
-                                    </div>
-                                    </div>
+                                  
                                     <button className="generate-button" type="button" onClick={this.onEnvironmentalConsistencyRatioCheck} >
                                     Generate 
                                     </button>
@@ -2138,7 +2139,7 @@ class MCDAProject extends Component {
                         </div>
                         <div>
                             <h3>Section 3</h3>
-                            <h1>Performance Ratings To Sub-Criteria</h1>
+                            <h1>AHP-Based Performance Rating for Construction Methods</h1>
                             <p>Rating Scale (1–5 Score): For each of the 15 sub-criteria, rate the performance of each construction method on a scale of 1 to 5, where
                                 1 = Very Poor  |  2 = Poor  |  3 = Moderate  |  4 = Good  |  5 = Very Good
                                 For cost/impact criteria, higher score means BETTER performance (lower cost, lower impact)
