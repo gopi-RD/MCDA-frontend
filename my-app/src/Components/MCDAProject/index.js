@@ -35,7 +35,10 @@ class MCDAProject extends Component {
         PFvsLD:"",MvsWS:"",MvsCD:"",MvsJC:"",MvsSD:"",MvsPA:"",MvsIC:"",MvsCS:"",MvsWC:"",
         MvsLCC:"",MvsMCC:"",MvsCM:"",MvsCWG:"",MvsEC:"",MvsWU:"",MvsLD:"",AMvsWS:"",AMvsCD:"",
         AMvsJC:"",AMvsSD:"",AMvsPA:"",AMvsIC:"",AMvsCS:"",AMvsWC:"",AMvsLCC:"",AMvsMCC:"",
-        AMvsCM:"",AMvsCWG:"",AMvsEC:"",AMvsWU:"",AMvsLD:"",isSubmitted:false }
+        AMvsCM:"",AMvsCWG:"",AMvsEC:"",AMvsWU:"",AMvsLD:"",isSubmitted:false,criteria: ["Worker safety and health", "Community disruption", "Job creation", "Skill development", "Public acceptance"],
+        selectedValues: {}, error: "",criteriaE:["Initial / capital cost","Construction speed","Labour / workforce cost","Maintenance / life cycle cost","Material wastage cost"],
+        selectedValuesE:{},errorE:"",criteriaEv:["Carbon emissions / CO2 footprint","Construction waste generation","Energy consumption","Water usage","Land disturbance"],
+        selectedValuesEv:{},errorEv:""}
 
     onChangeUsername=(event)=>{
         this.setState({username:event.target.value})
@@ -650,15 +653,9 @@ class MCDAProject extends Component {
     )
    }
 
-
-    onFailureResponse=(msg)=>{
-
-        this.setState({isErr:true,isErrorMsg:msg})
-
-    }
     // Form submission handler
 
-    onSubmitForm=async (event)=>{
+    onSubmitForm=async (event,sortedObject,sortedEconomicObject,sortedEnvironmentalObject)=>{
         event.preventDefault()
         const {username,designation,institution,areaOfExpertise,experience,qualifications,
             WSvsWS,WSvsCD,WSvsSD,WSvsJC,WSvsPA,CDvsWS,CDvsCD,CDvsJC,CDvsSD,CDvsPA,JCvsWS,
@@ -677,7 +674,7 @@ class MCDAProject extends Component {
 
             } =this.state
 
-       // validate the username and 
+       
         
         if (username===""){
             this.setState({isUserErr:true,isUserErrMsg:"Required"})
@@ -752,21 +749,21 @@ class MCDAProject extends Component {
                 mainCriteria:`Soical - ${uuidv4()}`,
                 subCriteria:[
                     {
-                        name:"Worker safety and health (vs) Worker safety and health ",
+                        name:`${Object.keys(sortedObject)[0]} vs ${Object.keys(sortedObject)[0]}`,
                         value:WSvsWS
                     },{
-                        name:"Worker safety and health (vs) Community disruption",
+                        name:`${Object.keys(sortedObject)[0]} vs ${Object.keys(sortedObject)[1]}`,
                         value:WSvsCD
                     }
                     ,{
-                        name:"Worker safety and health (vs) Job creation",
+                        name:`${Object.keys(sortedObject)[0]} vs ${Object.keys(sortedObject)[2]}`,
                         value:WSvsJC
                     },
                     {
-                        name:"Worker safety and health (vs) Skill development",
+                        name:`${Object.keys(sortedObject)[0]} vs ${Object.keys(sortedObject)[3]}`,
                         value:WSvsSD
                     },{
-                        name:"Worker safety and health (vs) Public acceptance",
+                        name:`${Object.keys(sortedObject)[0]} vs ${Object.keys(sortedObject)[4]}`,
                         value:WSvsPA
                     }
 
@@ -777,23 +774,23 @@ class MCDAProject extends Component {
                 mainCriteria:`Soical - ${uuidv4()}`,
                 subCriteria:[
                     {
-                        name:"Community disruption (vs) Worker safety and health ",
+                        name:`${Object.keys(sortedObject)[1]} vs ${Object.keys(sortedObject)[0]}`,
                         value:CDvsWS
                     },
                     {
-                        name:"Community disruption (vs) Community disruption ",
+                        name:`${Object.keys(sortedObject)[1]} vs ${Object.keys(sortedObject)[1]}`,
                         value:CDvsCD
                     },
                     {
-                        name:"Community disruption (vs) Job creation ",
+                        name:`${Object.keys(sortedObject)[1]} vs ${Object.keys(sortedObject)[2]}`,
                         value:CDvsJC
                     },
                     {
-                        name:"Community disruption (vs) Skill developmen  ",
+                        name:`${Object.keys(sortedObject)[1]} vs ${Object.keys(sortedObject)[3]}`,
                         value:CDvsSD
                     },
                     {
-                        name:"Community disruption (vs) Public acceptance ",
+                        name:`${Object.keys(sortedObject)[1]} vs ${Object.keys(sortedObject)[4]}`,
                         value:CDvsPA
                     },
                 ]
@@ -803,23 +800,23 @@ class MCDAProject extends Component {
                 mainCriteria:`Soical - ${uuidv4()}`,
                 subCriteria:[
                     {
-                        name:" Job creation (vs)Worker safety and health  ",
+                        name:`${Object.keys(sortedObject)[2]} vs ${Object.keys(sortedObject)[0]}`,
                         value:JCvsWS
                     },
                     {
-                        name:"Job creation (vs) Community disruption ",
+                        name:`${Object.keys(sortedObject)[2]} vs ${Object.keys(sortedObject)[1]}`,
                         value:JCvsCD
                     },
                     {
-                        name:"Job creation (vs) Job creation ",
+                        name:`${Object.keys(sortedObject)[2]} vs ${Object.keys(sortedObject)[2]}`,
                         value:JCvsJC
                     },
                     {
-                        name:"Job creation (vs) Skill developmen  ",
+                        name:`${Object.keys(sortedObject)[2]} vs ${Object.keys(sortedObject)[3]}`,
                         value:JCvsSD
                     },
                     {
-                        name:"Job creation (vs) Public acceptance ",
+                        name:`${Object.keys(sortedObject)[2]} vs ${Object.keys(sortedObject)[4]}`,
                         value:JCvsPA
                     },
                 ]
@@ -829,23 +826,23 @@ class MCDAProject extends Component {
                 mainCriteria:`Soical - ${uuidv4()}`,
                 subCriteria:[
                     {
-                        name:"Skill developmen (vs)Worker safety and health  ",
+                        name:`${Object.keys(sortedObject)[3]} vs ${Object.keys(sortedObject)[0]}`,
                         value:SDvsWS
                     },
                     {
-                        name:"Skill developmen (vs) Community disruption ",
+                        name:`${Object.keys(sortedObject)[3]} vs ${Object.keys(sortedObject)[1]}`,
                         value:SDvsCD
                     },
                     {
-                        name:"Skill developmen (vs) Job creation ",
+                        name:`${Object.keys(sortedObject)[3]} vs ${Object.keys(sortedObject)[2]}`,
                         value:SDvsJC
                     },
                     {
-                        name:"Skill developmen (vs) Skill developmen  ",
+                        name:`${Object.keys(sortedObject)[3]} vs ${Object.keys(sortedObject)[3]}`,
                         value:SDvsSD
                     },
                     {
-                        name:"Skill developmen (vs) Public acceptance ",
+                        name:`${Object.keys(sortedObject)[3]} vs ${Object.keys(sortedObject)[4]}`,
                         value:SDvsPA
                     },
                 ]
@@ -855,23 +852,23 @@ class MCDAProject extends Component {
                 mainCriteria:`Soical - ${uuidv4()}`,
                 subCriteria:[
                     {
-                        name:"Public acceptance (vs)Worker safety and health  ",
+                        name:`${Object.keys(sortedObject)[4]} vs ${Object.keys(sortedObject)[0]}`,
                         value:PAvsWS
                     },
                     {
-                        name:"Public acceptance (vs) Community disruption ",
+                        name:`${Object.keys(sortedObject)[4]} vs ${Object.keys(sortedObject)[1]}`,
                         value:PAvsCD
                     },
                     {
-                        name:"Public acceptance (vs) Job creation ",
+                        name:`${Object.keys(sortedObject)[4]} vs ${Object.keys(sortedObject)[2]}`,
                         value:PAvsJC
                     },
                     {
-                        name:"Public acceptance (vs) Skill developmen  ",
+                        name:`${Object.keys(sortedObject)[4]} vs ${Object.keys(sortedObject)[3]}`,
                         value:PAvsSD
                     },
                     {
-                        name:"Public acceptance (vs) Public acceptance ",
+                        name:`${Object.keys(sortedObject)[4]} vs ${Object.keys(sortedObject)[4]}`,
                         value:PAvsPA
                     },
                 ]
@@ -884,23 +881,23 @@ class MCDAProject extends Component {
                 mainCriteria:`Economic - ${uuidv4()}`,
                 subCriteria:[
                     {
-                        name:"Initial / capital cost (vs)Initial / capital cost",
+                        name:`${Object.keys(sortedEconomicObject)[0]} vs ${Object.keys(sortedEconomicObject)[0]}`,
                         value:ICvsIC
                     },
                      {
-                        name:"Initial / capital cost (vs)Construction speed",
+                        name:`${Object.keys(sortedEconomicObject)[0]} vs ${Object.keys(sortedEconomicObject)[1]}`,
                         value:ICvsCS
                     },
                      {
-                        name:"Initial / capital cost (vs)Labour / workforce cost",
+                        name:`${Object.keys(sortedEconomicObject)[0]} vs ${Object.keys(sortedEconomicObject)[2]}`,
                         value:ICvsWC
                     },
                      {
-                        name:"Initial / capital cost (vs)Maintenance & life-cycle cost",
+                        name:`${Object.keys(sortedEconomicObject)[0]} vs ${Object.keys(sortedEconomicObject)[3]}`,
                         value:ICvsLCC
                     },
                      {
-                        name:"Initial / capital cost (vs)Material wastage cost",
+                        name:`${Object.keys(sortedEconomicObject)[0]} vs ${Object.keys(sortedEconomicObject)[4]}`,
                         value:ICvsMCC
                     },
 
@@ -911,23 +908,23 @@ class MCDAProject extends Component {
                 mainCriteria:`Economic - ${uuidv4()}`,
                 subCriteria:[
                     {
-                        name:"Construction speed (vs)Initial / capital cost",
+                        name:`${Object.keys(sortedEconomicObject)[1]} vs ${Object.keys(sortedEconomicObject)[0]}`,
                         value:CSvsIC
                     },
                      {
-                        name:"Construction speed (vs)Construction speed",
+                        name:`${Object.keys(sortedEconomicObject)[1]} vs ${Object.keys(sortedEconomicObject)[1]}`,
                         value:CSvsCS
                     },
                      {
-                        name:"Construction speed (vs)Labour / workforce cost",
+                        name:`${Object.keys(sortedEconomicObject)[1]} vs ${Object.keys(sortedEconomicObject)[2]}`,
                         value:CSvsWC
                     },
                      {
-                        name:"Construction speed (vs)Maintenance & life-cycle cost",
+                        name:`${Object.keys(sortedEconomicObject)[1]} vs ${Object.keys(sortedEconomicObject)[3]}`,
                         value:CSvsLCC
                     },
                      {
-                        name:"Construction speed (vs)Material wastage cost",
+                        name:`${Object.keys(sortedEconomicObject)[1]} vs ${Object.keys(sortedEconomicObject)[4]}`,
                         value:CSvsMCC
                     },
 
@@ -939,23 +936,23 @@ class MCDAProject extends Component {
                 mainCriteria:`Economic - ${uuidv4()}`,
                 subCriteria:[
                     {
-                        name:"workforce cost (vs)Initial / capital cost",
+                        name:`${Object.keys(sortedEconomicObject)[2]} vs ${Object.keys(sortedEconomicObject)[0]}`,
                         value:WCvsIC
                     },
                      {
-                        name:"workforce cost (vs)Construction speed",
+                        name:`${Object.keys(sortedEconomicObject)[2]} vs ${Object.keys(sortedEconomicObject)[1]}`,
                         value:WCvsCS
                     },
                      {
-                        name:"workforce cost (vs)Labour / workforce cost",
+                        name:`${Object.keys(sortedEconomicObject)[2]} vs ${Object.keys(sortedEconomicObject)[2]}`,
                         value:WCvsWC
                     },
                      {
-                        name:"workforce cost (vs)Maintenance & life-cycle cost",
+                        name:`${Object.keys(sortedEconomicObject)[2]} vs ${Object.keys(sortedEconomicObject)[3]}`,
                         value:WCvsLCC
                     },
                      {
-                        name:"workforce cost (vs)Material wastage cost",
+                        name:`${Object.keys(sortedEconomicObject)[2]} vs ${Object.keys(sortedEconomicObject)[4]}`,
                         value:WCvsMCC
                     },
 
@@ -967,23 +964,23 @@ class MCDAProject extends Component {
                 mainCriteria:`Economic - ${uuidv4()}`,
                 subCriteria:[
                     {
-                        name:"Maintenance (vs)Initial / capital cost",
+                        name:`${Object.keys(sortedEconomicObject)[3]} vs ${Object.keys(sortedEconomicObject)[0]}`,
                         value:LCCvsIC
                     },
                      {
-                        name:"Maintenance (vs)Construction speed",
+                        name:`${Object.keys(sortedEconomicObject)[3]} vs ${Object.keys(sortedEconomicObject)[1]}`,
                         value:LCCvsCS
                     },
                      {
-                        name:"Maintenance (vs)Labour / workforce cost",
+                        name:`${Object.keys(sortedEconomicObject)[3]} vs ${Object.keys(sortedEconomicObject)[2]}`,
                         value:LCCvsWC
                     },
                      {
-                        name:"Maintenance (vs)Maintenance & life-cycle cost",
+                        name:`${Object.keys(sortedEconomicObject)[3]} vs ${Object.keys(sortedEconomicObject)[3]}`,
                         value:LCCvsLCC
                     },
                      {
-                        name:"Maintenance (vs)Material wastage cost",
+                        name:`${Object.keys(sortedEconomicObject)[3]} vs ${Object.keys(sortedEconomicObject)[4]}`,
                         value:LCCvsMCC
                     },
 
@@ -995,23 +992,23 @@ class MCDAProject extends Component {
                 mainCriteria:`Economic - ${uuidv4()}`,
                 subCriteria:[
                     {
-                        name:"Material wastage cost (vs)Initial / capital cost",
+                        name:`${Object.keys(sortedEconomicObject)[4]} vs ${Object.keys(sortedEconomicObject)[0]}`,
                         value:MCCvsIC
                     },
                      {
-                        name:"Material wastage cost (vs)Construction speed",
+                        name:`${Object.keys(sortedEconomicObject)[4]} vs ${Object.keys(sortedEconomicObject)[1]}`,
                         value:MCCvsCS
                     },
                      {
-                        name:"Material wastage cost (vs)Labour / workforce cost",
+                        name:`${Object.keys(sortedEconomicObject)[4]} vs ${Object.keys(sortedEconomicObject)[2]}`,
                         value:MCCvsWC
                     },
                      {
-                        name:"Material wastage cost (vs)Maintenance & life-cycle cost",
+                        name:`${Object.keys(sortedEconomicObject)[4]} vs ${Object.keys(sortedEconomicObject)[3]}`,
                         value:MCCvsLCC
                     },
                      {
-                        name:"Material wastage cost (vs)Material wastage cost",
+                        name:`${Object.keys(sortedEconomicObject)[4]} vs ${Object.keys(sortedEconomicObject)[4]}`,
                         value:MCCvsMCC
                     },
 
@@ -1025,23 +1022,23 @@ class MCDAProject extends Component {
                 mainCriteria:`Environmental-${uuidv4()}`,
                 subCriteria:[
                     {
-                        name:"Carbon emissions (vs) Carbon emissions",
+                        name:`${Object.keys(sortedEnvironmentalObject)[0]} vs ${Object.keys(sortedEnvironmentalObject)[0]}`,
                         value:CMvsCM
                     },
                      {
-                        name:"Carbon emissions (vs)Construction waste generation ",
+                        name:`${Object.keys(sortedEnvironmentalObject)[0]} vs ${Object.keys(sortedEnvironmentalObject)[1]}`,
                         value:CMvsCWG
                     },
                      {
-                        name:"Carbon emissions (vs)Energy consumption ",
+                        name:`${Object.keys(sortedEnvironmentalObject)[0]} vs ${Object.keys(sortedEnvironmentalObject)[2]}`,
                         value:CMvsEC
                     },
                      {
-                        name:"Carbon emissions (vs)Water usage ",
+                        name:`${Object.keys(sortedEnvironmentalObject)[0]} vs ${Object.keys(sortedEnvironmentalObject)[3]}`,
                         value:CMvsWU
                     },
                      {
-                        name:"Carbon emissions (vs)Land disturbance ",
+                        name:`${Object.keys(sortedEnvironmentalObject)[0]} vs ${Object.keys(sortedEnvironmentalObject)[4]}`,
                         value:CMvsLD
                     },
                 ]
@@ -1050,23 +1047,23 @@ class MCDAProject extends Component {
                 mainCriteria:`Environmental-${uuidv4()}`,
                 subCriteria:[
                     {
-                        name:"Construction waste generation (vs) Carbon emissions",
+                        name:`${Object.keys(sortedEnvironmentalObject)[1]} vs ${Object.keys(sortedEnvironmentalObject)[0]}`,
                         value:CWGvsCM
                     },
                      {
-                        name:"Construction waste generation (vs)Construction waste generation ",
+                        name:`${Object.keys(sortedEnvironmentalObject)[1]} vs ${Object.keys(sortedEnvironmentalObject)[1]}`,
                         value:CWGvsCWG
                     },
                      {
-                        name:"Construction waste generation (vs)Energy consumption ",
+                        name:`${Object.keys(sortedEnvironmentalObject)[1]} vs ${Object.keys(sortedEnvironmentalObject)[2]}`,
                         value:CWGvsEC
                     },
                      {
-                        name:"Construction waste generation (vs)Water usage ",
+                        name:`${Object.keys(sortedEnvironmentalObject)[1]} vs ${Object.keys(sortedEnvironmentalObject)[3]}`,
                         value:CWGvsWU
                     },
                      {
-                        name:"Construction waste generation (vs)Land disturbance ",
+                        name:`${Object.keys(sortedEnvironmentalObject)[1]} vs ${Object.keys(sortedEnvironmentalObject)[4]}`,
                         value:CWGvsLD
                     },
                 ]
@@ -1075,23 +1072,23 @@ class MCDAProject extends Component {
                 mainCriteria:`Environmental-${uuidv4()}`,
                 subCriteria:[
                     {
-                        name:"Energy consumption (vs) Carbon emissions",
+                        name:`${Object.keys(sortedEnvironmentalObject)[2]} vs ${Object.keys(sortedEnvironmentalObject)[0]}`,
                         value:ECvsCM
                     },
                      {
-                        name:"Energy consumption (vs)Construction waste generation ",
+                        name:`${Object.keys(sortedEnvironmentalObject)[2]} vs ${Object.keys(sortedEnvironmentalObject)[1]}`,
                         value:ECvsCWG
                     },
                      {
-                        name:"Energy consumption (vs)Energy consumption ",
+                        name:`${Object.keys(sortedEnvironmentalObject)[2]} vs ${Object.keys(sortedEnvironmentalObject)[2]}`,
                         value:ECvsEC
                     },
                      {
-                        name:"Energy consumption (vs)Water usage ",
+                        name:`${Object.keys(sortedEnvironmentalObject)[2]} vs ${Object.keys(sortedEnvironmentalObject)[3]}`,
                         value:ECvsWU
                     },
                      {
-                        name:"Energy consumption (vs)Land disturbance ",
+                        name:`${Object.keys(sortedEnvironmentalObject)[2]} vs ${Object.keys(sortedEnvironmentalObject)[4]}`,
                         value:ECvsLD
                     },
                 ]
@@ -1100,23 +1097,23 @@ class MCDAProject extends Component {
                 mainCriteria:`Environmental-${uuidv4()}`,
                 subCriteria:[
                     {
-                        name:"Water usage (vs) Carbon emissions",
+                        name:`${Object.keys(sortedEnvironmentalObject)[3]} vs ${Object.keys(sortedEnvironmentalObject)[0]}`,
                         value:WUvsCM
                     },
                      {
-                        name:"Water usage (vs)Construction waste generation ",
+                        name:`${Object.keys(sortedEnvironmentalObject)[3]} vs ${Object.keys(sortedEnvironmentalObject)[1]}`,
                         value:WUvsCWG
                     },
                      {
-                        name:"Water usage (vs)Energy consumption ",
+                        name:`${Object.keys(sortedEnvironmentalObject)[3]} vs ${Object.keys(sortedEnvironmentalObject)[2]}`,
                         value:WUvsEC
                     },
                      {
-                        name:"Water usage (vs)Water usage ",
+                        name:`${Object.keys(sortedEnvironmentalObject)[3]} vs ${Object.keys(sortedEnvironmentalObject)[3]}`,
                         value:WUvsWU
                     },
                      {
-                        name:"Water usage (vs)Land disturbance ",
+                        name:`${Object.keys(sortedEnvironmentalObject)[3]} vs ${Object.keys(sortedEnvironmentalObject)[4]}`,
                         value:WUvsLD
                     },
                 ]
@@ -1125,23 +1122,23 @@ class MCDAProject extends Component {
                 mainCriteria:`Environmental-${uuidv4()}`,
                 subCriteria:[
                     {
-                        name:"Land disturbance (vs) Carbon emissions",
+                        name:`${Object.keys(sortedEnvironmentalObject)[4]} vs ${Object.keys(sortedEnvironmentalObject)[0]}`,
                         value:LDvsCM
                     },
                      {
-                        name:"Land disturbance (vs)Construction waste generation ",
+                        name:`${Object.keys(sortedEnvironmentalObject)[4]} vs ${Object.keys(sortedEnvironmentalObject)[1]}`,
                         value:LDvsCWG
                     },
                      {
-                        name:"Land disturbance (vs)Energy consumption ",
+                        name:`${Object.keys(sortedEnvironmentalObject)[4]} vs ${Object.keys(sortedEnvironmentalObject)[2]}`,
                         value:LDvsEC
                     },
                      {
-                        name:"Land disturbance (vs)Water usage ",
+                        name:`${Object.keys(sortedEnvironmentalObject)[4]} vs ${Object.keys(sortedEnvironmentalObject)[3]}`,
                         value:LDvsWU
                     },
                      {
-                        name:"Land disturbance (vs)Land disturbance ",
+                        name:`${Object.keys(sortedEnvironmentalObject)[4]} vs ${Object.keys(sortedEnvironmentalObject)[4]}`,
                         value:LDvsLD
                     },
                 ]
@@ -1563,12 +1560,125 @@ class MCDAProject extends Component {
         }
         const responseMethod=await fetch(urlOfAddMethods,optionsCM);
         const methodMessage=await responseMethod.json();
-        console.log(methodMessage) 
+        console.log(methodMessage)  
 
-        this.setState({isSubmitted:true})
-              
-
+        this.setState({isSubmitted:true}) 
+     
     }
+
+    handleClick = (criterion, value) => {
+    const { selectedValues } = this.state;
+
+    // Toggle OFF if same value clicked again
+    if (selectedValues[criterion] === value) {
+      const updated = { ...selectedValues };
+      delete updated[criterion];
+
+      this.setState({
+        selectedValues: updated,
+        error: ""
+      });
+      return;
+    }
+
+    // Check duplicate value
+    const alreadySelected = Object.entries(selectedValues).find(
+      ([key, val]) => val === value && key !== criterion
+    );
+
+    if (alreadySelected) {
+      this.setState({
+        error: `Rank ${value} already selected for "${alreadySelected[0]}" ❌`
+      });
+      return;
+    }
+
+    // Update state
+    this.setState({
+      selectedValues: {
+        ...selectedValues,
+        [criterion]: value
+      },
+      error: ""
+    });
+                   
+   };
+
+   // Economic criteria handle
+     handleClickE = (criterion, value) => {
+    const { selectedValuesE } = this.state;
+
+    // Toggle OFF if same value clicked again
+    if (selectedValuesE[criterion] === value) {
+      const updated = { ...selectedValuesE };
+      delete updated[criterion];
+
+      this.setState({
+        selectedValuesE: updated,
+        errorE: ""
+      });
+      return;
+    }
+
+    // Check duplicate value
+    const alreadySelected = Object.entries(selectedValuesE).find(
+      ([key, val]) => val === value && key !== criterion
+    );
+
+    if (alreadySelected) {
+      this.setState({
+        errorE: `Rank ${value} already selected for "${alreadySelected[0]}" ❌`
+      });
+      return;
+    }
+
+    // Update state
+    this.setState({
+      selectedValuesE: {
+        ...selectedValuesE,
+        [criterion]: value
+      },
+      errorE: ""
+    });
+   };
+   // Evironmental criteria
+     handleClickEv = (criterion, value) => {
+    const { selectedValuesEv } = this.state;
+
+    // Toggle OFF if same value clicked again
+    if (selectedValuesEv[criterion] === value) {
+      const updated = { ...selectedValuesEv };
+      delete updated[criterion];
+
+      this.setState({
+        selectedValuesEv: updated,
+        errorEv: ""
+      });
+      return;
+    }
+
+    // Check duplicate value
+    const alreadySelected = Object.entries(selectedValuesEv).find(
+      ([key, val]) => val === value && key !== criterion
+    );
+
+    if (alreadySelected) {
+      this.setState({
+        errorEv: `Rank ${value} already selected for "${alreadySelected[0]}" ❌`
+      });
+      return;
+    }
+
+    // Update state
+    this.setState({
+      selectedValuesEv: {
+        ...selectedValuesEv,
+        [criterion]: value
+      },
+      errorEv: ""
+    });
+   };
+  
 
     render(){
                 const {username,designation,institution,areaOfExpertise,experience,
@@ -1594,25 +1704,139 @@ class MCDAProject extends Component {
                 PFvsWC,PFvsLCC,PFvsMCC,PFvsCM,PFvsCWG,PFvsEC,PFvsWU,PFvsLD,MvsWS,MvsCD,MvsJC,MvsSD,MvsPA,
                 MvsIC,MvsCS,MvsWC,MvsLCC,MvsMCC,MvsCM,MvsCWG,MvsEC,MvsWU,MvsLD,AMvsWS,AMvsCD,AMvsJC,
                 AMvsSD,AMvsPA,AMvsIC,AMvsCS,AMvsWC,AMvsLCC,AMvsMCC,AMvsCM,AMvsCWG,AMvsEC,AMvsWU,
-                AMvsLD,isSubmitted} = this.state   
+                AMvsLD,isSubmitted,criteria, selectedValues, error,criteriaE,criteriaEv,
+                selectedValuesE,selectedValuesEv,errorE,errorEv,} = this.state   
                 const userBorder=isUserErr?"error-input-border":null;
                 const designationBorder=isDesignationErr?"error-input-border":null;
                 const institutionBorder=isInstitutionErr?"error-input-border":null;
                 const areaOfExpertiseBorder=isAreaOfExpertiseErr?"error-input-border":null;
                 const experienceBorder=isExperienceErr?"error-input-border":null;
                 const qualificationsBorder=isQualificationsErr?"error-input-border":null;
-                
+                //console.log(selectedValues)
+                const sortedObject = Object.fromEntries(
+                    Object.entries(selectedValues).sort((a, b) => Number(a[1]) - Number(b[1]))
+                    );
+                const sortedEconomicObject = Object.fromEntries(
+                Object.entries(selectedValuesE).sort((a, b) => Number(a[1]) - Number(b[1]))
+                );
+                const sortedEnvironmentalObject = Object.fromEntries(
+                Object.entries(selectedValuesEv).sort((a, b) => Number(a[1]) - Number(b[1]))
+                );
+
                 
                 
         return (
             <>{ !isSubmitted?
                 <div className="lg-home-page-container"  >
 
-                    <form className="lg-register-form-container" onSubmit={this.onSubmitForm}>
-                        <h1 className="lg-website-text">Construction Method Selection — Expert Evaluation Form </h1> 
-                        <p className="description-of-title">This survey collects expert judgements for a Multi-Criteria Decision Analysis (MCDA) to select the most suitable construction method. Your responses will be used to calculate criteria weights and performance scores using AHP and TOPSIS/VIKOR methods.</p>
-                        <h3>Section 1</h3>
-                        <h1> Personal Information</h1>
+                    <form className="lg-register-form-container" onSubmit={(event) =>
+                                    this.onSubmitForm(
+                                        event,
+                                        sortedObject,
+                                        sortedEconomicObject,
+                                        sortedEnvironmentalObject
+                                    )
+                                    }>
+                        <div>
+                            <div className="intro-container">
+
+  <h1 className="main-title">
+    Construction Method Selection Using MCDA – Expert Evaluation Form
+  </h1>
+
+  <div className="intro-card">
+    <h2 className="section-title">Project Introduction</h2>
+
+    <p className="description">
+      We are conducting a study to evaluate and compare various construction
+      methods, including <span>conventional</span>, <span>precast</span>,
+      <span> prefabrication</span>, <span>modular construction</span>, and
+      <span> 3D printing</span>, using a Multi-Criteria Decision Analysis (MCDA)
+      approach.
+    </p>
+
+    <p className="description">
+      This survey is specifically designed for experienced professionals in the
+      construction and engineering sectors. Your expertise and practical
+      insights are essential in helping us assess these construction methods
+      across key dimensions such as <span>economic feasibility</span>,
+      <span> environmental impact</span>, and <span>social considerations</span>.
+    </p>
+
+    <p className="description highlight-box">
+      We kindly request you to provide your expert judgment by rating and
+      comparing the given criteria based on your knowledge and professional
+      experience. Your responses will remain strictly confidential and will be
+      used solely for academic and research purposes.
+    </p>
+
+  </div>
+</div>
+                            <div class="process-container">
+                            <h1 class="title">Form Filling Steps</h1>
+
+                            <ul class="process-list">
+                                <li>Selecting the priority-wise ranking Social Criteria</li>
+                                <li> PerformingPairwise Comparison of Selected Soical Criteria</li>
+                                 <li>To Check Consistency Ratio </li>
+                                 <li>Selecting the priority-wise ranking Economic Criteria</li>
+                                <li>Performing Pairwise Comparison of Selected Economic Criteria</li>
+                                 <li>To Check Consistency Ratio </li>
+                                 <li>Selecting the priority-wise ranking Environmental Criteria</li>
+                                <li> Performing Pairwise Comparison of Selected Environmental Criteria</li>
+                                <li>To Check Consistency Ratio </li>
+                                <li>Scoring of Construction Methods Based on Criterias</li>
+                             
+                            </ul>
+                            </div>
+                            <div className="hero-container">
+                            <div className="glass-card">
+                                <h3 className="proj-heading">Project Title:</h3>
+                                <h1 className="project-title">
+                                A Comparative Study on the Sustainability of{" "}
+                                <span className="project-highlight">3D Printing</span> and Various
+                                Construction Methods
+                                </h1>
+
+                                <p className="subtitle">
+                                Evaluating modern and conventional construction techniques using
+                                sustainability criteria
+                                </p>
+                            </div>
+                            </div>
+                            <div className="team-container">
+                            <h1 className="team-title">Project Team</h1>
+
+                            <div className="team-cards">
+                                <div className="card">
+                                <h3>Name: S.Gopi</h3>
+                                <p>Roll No: H2560122</p>
+                                </div>
+
+                                <div className="card">
+                                <h3>Name: S.Shahanaz</h3>
+                                <p>Roll No: H2560124</p>
+                                </div>
+
+                                <div className="card">
+                                <h3>Name: S.Tarun</h3>
+                                <p>Roll No: H2560128</p>
+                                </div>
+                            </div>
+
+                            <h1 className="guide-title">Project Guide</h1>
+                            <div className="guide-card">
+                                <h3>Guide Details</h3>
+                                <p> <strong>Name:</strong>  Venkatesan Ranganaidu </p>
+                                <p><strong>Designation:</strong> Professor, Dean of IQAC at NUCS hyderabad </p>
+                                <p><strong>Department:</strong> Contracts ,Claims & Lean Construction </p>
+                            </div>
+                            </div>
+                            
+                        </div>
+                        
+                        <h3 className="section">Section 1</h3>
+                        <h1 className="personal-inf"> Personal Information</h1>
                         <div className="lg-separator">
                         <label className="lg-label-text" htmlFor="username">FULL NAME</label>
                         <input className={`lg-input-element ${userBorder}`} type="text" id="username" value={username} onChange={this.onChangeUsername} placeholder="e.g., Gopi"/>
@@ -1645,17 +1869,119 @@ class MCDAProject extends Component {
                         </div>
                         
                         <div>
-                            <h3>Section 2</h3>
-                            <h1>Pairwise Comparison</h1>
-                            <p>This section generates the AHP Pairwise Comparison Matrices required to compute criteria weights. It is the most mathematically critical section of the survey. The data from pairwise questions ( Social ,  Economic , Environmental) is used to build reciprocal matrices, compute eigenvectors (priority weights), and verify logical consistency through the Consistency Ratio (CR less than 0.10).
+                            <h3 className="section">Section 2</h3>
+                            <h1 className="personal-inf">Pairwise Comparison</h1>
+                            <p className="text">This section generates the AHP Pairwise Comparison Matrices required to compute criteria weights. It is the most mathematically critical section of the survey. The data from pairwise questions ( Social ,  Economic , Environmental) is used to build reciprocal matrices, compute eigenvectors (priority weights), and verify logical consistency through the Consistency Ratio (CR less than 0.10).
 
                             </p>
-                            <h3>AHP SCALE REFERENCE </h3>
-                                <p>   1 = Equally important  |  2 = Weakly between equal and moderate  |  3 = Moderately more important  |  4 = Moderately to strongly  |  5 = Strongly more important  |  6 = Strongly to very strongly  |  7 = Very strongly more important  |  8 = Very to extremely strongly  |  9 = Extremely more important  Instruction to experts: 
-                                    <span className="ahp-info-title">If Criterion A is 5x more important than Criterion B, select 5 in the row 'A vs B'. The reciprocal value (1/5) is automatically entered in the matrix for 'B vs A'.</span>
-                            </p>
+                            
+                                <div className="table-container">
+                                <h3 className="table-title">AHP SCALE REFERENCE </h3>
+                                <table className="ahp-table">
+                                    <thead>
+                                    <tr>
+                                        <th>Intensity of Importance</th>
+                                        <th>Definition</th>
+                                        <th>Explanation</th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Equal Importance</td>
+                                        <td>Two factors contribute equally to the objective</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Somewhat more important</td>
+                                        <td>
+                                        Experience and judgment slightly favour one factor over the other
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Much more important</td>
+                                        <td>
+                                        Experience and judgment strongly favor one factor over the other
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>7</td>
+                                        <td>Very much more important</td>
+                                        <td>
+                                        A factor is favoured very strongly over the other. Evidence exists
+                                        for its dominance
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>9</td>
+                                        <td>Extremely more important</td>
+                                        <td>
+                                        The evidence favoring one factor over the other is of the highest
+                                        possible validity
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>2, 4, 6, 8</td>
+                                        <td>Intermediate Importance</td>
+                                        <td>For compromise between the above values</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                </div>
+
                             <div>
-                                <h1 >Social Criteria</h1>
+                                <h1 className="personal-inf" >Social Criteria</h1> 
+                                 <div className="container">
+                                        <h2 className="ranking-title">Selecting Social Criteria Ranking</h2>
+                                        <p>Selecting Social Criteria Ranking Based on Priority. Rank 1 - Highest Priority | Rank 2 - Very High Priority | Rank 3 - Medium Priority | Rank 4 - Low Priority | Rank 5 - Least Priority</p>
+
+                                        <div className="table-wrapper">
+                                        <table className="ranking-table">
+                                            <thead className="ranking-thead">
+                                            <tr className="ranking-tr">
+                                                <th className="raking-th sticky-col">Criteria</th>
+                                                {[1, 2, 3, 4, 5].map((num) => (
+                                                <th className="raking-th" key={num}>Rank {num}</th>
+                                                ))}
+                                            </tr>
+                                            </thead>
+
+                                            <tbody className="rankingtbody">
+                                            {criteria.map((criterion) => (
+                                                <tr key={criterion}>
+                                                <td className=" ranking-td sticky-col">{criterion}</td>
+
+                                                {[1, 2, 3, 4, 5].map((num) => {
+                                                    const isChecked = selectedValues[criterion] === num;
+
+                                                    return (
+                                                    <td className="ranking-td" key={num}>
+                                                        <input
+                                                        type="radio"
+                                                        checked={isChecked}
+                                                        onClick={() =>
+                                                            this.handleClick(criterion, num)
+                                                        }
+                                                        readOnly
+                                                        />
+                                                    </td>
+                                                    );
+                                                })}
+                                                </tr>
+                                            ))}
+                                            </tbody>
+                                        </table>
+                                        </div>
+
+                                        {error && <div className="error">{error}</div>}
+                                    </div>
                                 <div>
                                     <div className="cr-container">
                                     <h2 className="cr-title">⚙️ Consistency Check</h2>
@@ -1679,30 +2005,30 @@ class MCDAProject extends Component {
                                 <div>
                                   <div className="construction-methods-main-container">
                                     <div className="sub-criteria-title-container">
-                                        <div className="title-container">
+                                        <div className="title-container sticky">
                                             <h1 className="title-text"> Social Criteria  </h1>
                                         </div>
                                         <div className="title-container">
-                                            <h1 className="title-text">Worker safety and health</h1>
+                                            <h1 className="title-text">{Object.keys(sortedObject)[0]}</h1>
                                         </div>  
                                         <div className="title-container">
-                                            <h1 className="title-text">Community disruption</h1>
+                                            <h1 className="title-text">{Object.keys(sortedObject)[1]}</h1>
                                         </div>  
                                         <div className="title-container">
-                                            <h1 className="title-text">Job creation</h1>
+                                            <h1 className="title-text">{Object.keys(sortedObject)[2]}</h1>
                                         </div>  
                                         <div className="title-container">
-                                            <h1 className="title-text">Skill development</h1>
+                                            <h1 className="title-text">{Object.keys(sortedObject)[3]}</h1>
                                         </div>  
                                         <div className="title-container">
-                                            <h1 className="title-text">Public acceptance</h1>
+                                            <h1 className="title-text">{Object.keys(sortedObject)[4]}</h1>
                                         </div>    
                                                 
                                     </div>
 
                                     <div className="sub-criteria-title-container">
-                                        <div className="title-container" >
-                                            <h1 className="title-text">Worker safety and health</h1>
+                                        <div className="title-container sticky" >
+                                            <h1 className="title-text">{Object.keys(sortedObject)[0]}</h1>
                                         </div>
                                         <div className="title-container">
                                             <input type="text" className="title-input" value={WSvsWS} />
@@ -1721,8 +2047,8 @@ class MCDAProject extends Component {
                                         </div>
                                     </div>
                                     <div className="sub-criteria-title-container">
-                                        <div className="title-container">
-                                             <h1 className="title-text">Community disruption</h1>
+                                        <div className="title-container sticky">
+                                             <h1 className="title-text">{Object.keys(sortedObject)[1]}</h1>
                                         </div>
                                        
                                         <div className="title-container">
@@ -1742,8 +2068,8 @@ class MCDAProject extends Component {
                                         </div>
                                     </div>
                                     <div className="sub-criteria-title-container">
-                                        <div className="title-container">
-                                            <h1 className="title-text">Job creation</h1>
+                                        <div className="title-container sticky">
+                                            <h1 className="title-text">{Object.keys(sortedObject)[2]}</h1>
                                         </div>
                                         
                                         <div className="title-container">
@@ -1763,8 +2089,8 @@ class MCDAProject extends Component {
                                         </div>
                                     </div>
                                     <div className="sub-criteria-title-container">
-                                        <div className="title-container">
-                                            <h1 className="title-text">Skill development</h1>
+                                        <div className="title-container sticky">
+                                            <h1 className="title-text">{Object.keys(sortedObject)[3]}</h1>
                                         </div>
                                         
                                         <div className="title-container">
@@ -1785,8 +2111,8 @@ class MCDAProject extends Component {
                                         
                                     </div>
                                     <div className="sub-criteria-title-container">
-                                        <div className="title-container">
-                                            <h1 className="title-text">Public acceptance</h1>
+                                        <div className="title-container sticky">
+                                            <h1 className="title-text">{Object.keys(sortedObject)[4]}</h1>
                                         </div>
                                         
                                         <div className="title-container">
@@ -1815,6 +2141,50 @@ class MCDAProject extends Component {
                             </div>
                             <div>
                                 <h1 >Economic Criteria</h1>
+                                 <div className="container">
+                                        <h2 className="ranking-title">Selecting Economic Criteria Ranking</h2>
+                                        <p>Selecting Economic Criteria Ranking Based on Priority. Rank 1 - Highest Priority | Rank 2 - Very High Priority | Rank 3 - Medium Priority | Rank 4 - Low Priority | Rank 5 - Least Priority</p>
+
+                                        <div className="table-wrapper">
+                                        <table className="ranking-table">
+                                            <thead className="ranking-thead">
+                                            <tr className="ranking-tr">
+                                                <th className="raking-th sticky-col">Criteria</th>
+                                                {[1, 2, 3, 4, 5].map((num) => (
+                                                <th className="raking-th" key={num}>Rank {num}</th>
+                                                ))}
+                                            </tr>
+                                            </thead>
+
+                                            <tbody className="rankingtbody">
+                                            {criteriaE.map((criterion) => (
+                                                <tr key={criterion}>
+                                                <td className=" ranking-td sticky-col">{criterion}</td>
+
+                                                {[1, 2, 3, 4, 5].map((num) => {
+                                                    const isChecked = selectedValuesE[criterion] === num;
+
+                                                    return (
+                                                    <td className="ranking-td" key={num}>
+                                                        <input
+                                                        type="radio"
+                                                        checked={isChecked}
+                                                        onClick={() =>
+                                                            this.handleClickE(criterion, num)
+                                                        }
+                                                        readOnly
+                                                        />
+                                                    </td>
+                                                    );
+                                                })}
+                                                </tr>
+                                            ))}
+                                            </tbody>
+                                        </table>
+                                        </div>
+
+                                        {errorE && <div className="error">{errorE}</div>}
+                                    </div>
                                 <div className="cr-container">
                                     <h2 className="cr-title">⚙️ Consistency Check</h2>
 
@@ -1838,28 +2208,28 @@ class MCDAProject extends Component {
                                 <div>
                                   <div className="construction-methods-main-container">
                                     <div className="sub-criteria-title-container">
-                                        <div className="title-container">
+                                        <div className="title-container sticky">
                                             <h1 className="title-text"> Economic Criteria  </h1>
                                         </div>
                                         <div className="title-container"    >
-                                            <h1 className="title-text">Initial / capital cost</h1>
+                                            <h1 className="title-text">{Object.keys(sortedEconomicObject)[0]}</h1>
                                         </div>
                                         <div className="title-container">
-                                            <h1 className="title-text">Construction speed</h1>
+                                            <h1 className="title-text">{Object.keys(sortedEconomicObject)[1]}</h1>
                                         </div>
                                         <div className="title-container">
-                                            <h1 className="title-text">Labour / workforce cost</h1>
+                                            <h1 className="title-text">{Object.keys(sortedEconomicObject)[2]}</h1>
                                         </div>
                                         <div className="title-container">
-                                            <h1 className="title-text">Maintenance & life-cycle cost</h1>
+                                            <h1 className="title-text">{Object.keys(sortedEconomicObject)[3]}</h1>
                                         </div>
-                                        <div className="title-container">
-                                            <h1 className="title-text">Material wastage cost</h1>
+                                        <div className="title-container ">
+                                            <h1 className="title-text">{Object.keys(sortedEconomicObject)[4]}</h1>
                                         </div>
                                     </div>
                                     <div className="sub-criteria-title-container">
-                                        <div className="title-container">
-                                        <h1 className="title-text">Initial / capital cost</h1>
+                                        <div className="title-container sticky">
+                                        <h1 className="title-text">{Object.keys(sortedEconomicObject)[0]}</h1>
                                         </div>
                                         
                                         <div className="title-container">
@@ -1879,8 +2249,8 @@ class MCDAProject extends Component {
                                         </div>
                                     </div>
                                     <div className="sub-criteria-title-container">
-                                        <div className="title-container">
-                                            <h1 className="title-text">Construction speed</h1>
+                                        <div className="title-container sticky">
+                                            <h1 className="title-text">{Object.keys(sortedEconomicObject)[1]}</h1>
                                         </div>
                                         
                                         <div className="title-container">
@@ -1901,8 +2271,8 @@ class MCDAProject extends Component {
                                        
                                     </div>
                                     <div className="sub-criteria-title-container">
-                                        <div className="title-container">
-                                            <h1 className="title-text">Labour / workforce cost</h1>
+                                        <div className="title-container sticky">
+                                            <h1 className="title-text">{Object.keys(sortedEconomicObject)[2]}</h1>
                                         </div>
                                         
                                         <div className="title-container">
@@ -1922,8 +2292,8 @@ class MCDAProject extends Component {
                                         </div>
                                     </div>
                                     <div className="sub-criteria-title-container">
-                                        <div className="title-container">
-                                            <h1 className="title-text">Maintenance & life-cycle cost</h1>
+                                        <div className="title-container sticky">
+                                            <h1 className="title-text">{Object.keys(sortedEconomicObject)[3]}</h1>
                                         </div>
                                         
                                         <div className="title-container">
@@ -1943,8 +2313,8 @@ class MCDAProject extends Component {
                                         </div>
                                      </div>
                                         <div className="sub-criteria-title-container">
-                                            <div className="title-container">
-                                            <h1 className="title-text">Material wastage cost</h1>
+                                            <div className="title-container sticky">
+                                            <h1 className="title-text">{Object.keys(sortedEconomicObject)[4]}</h1>
                                             </div>
                                             <div className="title-container">
                                             <input type="text" className="title-input" value={MCCvsIC} />
@@ -1974,6 +2344,50 @@ class MCDAProject extends Component {
                             </div>
                              <div>
                                 <h1 >Environmental Criteria</h1>
+                                <div className="container">
+                                        <h2 className="ranking-title">Selecting Environmental Criteria Ranking</h2>
+                                        <p>Selecting Environmental Criteria Ranking Based on Priority. Rank 1 - Highest Priority | Rank 2 - Very High Priority | Rank 3 - Medium Priority | Rank 4 - Low Priority | Rank 5 - Least Priority</p>
+
+                                        <div className="table-wrapper">
+                                        <table className="ranking-table">
+                                            <thead className="ranking-thead">
+                                            <tr className="ranking-tr">
+                                                <th className="raking-th sticky-col">Criteria</th>
+                                                {[1, 2, 3, 4, 5].map((num) => (
+                                                <th className="raking-th" key={num}>Rank {num}</th>
+                                                ))}
+                                            </tr>
+                                            </thead>
+
+                                            <tbody className="rankingtbody">
+                                            {criteriaEv.map((criterion) => (
+                                                <tr key={criterion}>
+                                                <td className=" ranking-td sticky-col">{criterion}</td>
+
+                                                {[1, 2, 3, 4, 5].map((num) => {
+                                                    const isChecked = selectedValuesEv[criterion] === num;
+
+                                                    return (
+                                                    <td className="ranking-td" key={num}>
+                                                        <input
+                                                        type="radio"
+                                                        checked={isChecked}
+                                                        onClick={() =>
+                                                            this.handleClickEv(criterion, num)
+                                                        }
+                                                        readOnly
+                                                        />
+                                                    </td>
+                                                    );
+                                                })}
+                                                </tr>
+                                            ))}
+                                            </tbody>
+                                        </table>
+                                        </div>
+
+                                        {errorEv && <div className="error">{errorEv}</div>}
+                                    </div>
                                 <div className="cr-container">
                                     <h2 className="cr-title">⚙️ Consistency Check</h2>
 
@@ -1997,23 +2411,23 @@ class MCDAProject extends Component {
                                 <div>
                                   <div className="construction-methods-main-container">
                                     <div className="sub-criteria-title-container">
-                                        <div className="title-container">
+                                        <div className="title-container sticky">
                                              <h1 className="title-text">Environmental Criteria</h1>
                                         </div>
                                          <div className="title-container">
-                                            <h1 className="title-text">Carbon emissions / CO2 footprint</h1>
+                                            <h1 className="title-text">{Object.keys(sortedEnvironmentalObject)[0]}</h1>
                                          </div>
                                          <div className="title-container">
-                                            <h1 className="title-text">Construction waste generation</h1>
+                                            <h1 className="title-text">{Object.keys(sortedEnvironmentalObject)[1]}</h1>
+                                         </div>
+                                         <div className="title-container ">
+                                            <h1 className="title-text">{Object.keys(sortedEnvironmentalObject)[2]}</h1>
                                          </div>
                                          <div className="title-container">
-                                            <h1 className="title-text">Energy consumption</h1>
+                                            <h1 className="title-text">{Object.keys(sortedEnvironmentalObject)[3]}</h1>
                                          </div>
                                          <div className="title-container">
-                                            <h1 className="title-text">Water usage</h1>
-                                         </div>
-                                         <div className="title-container">
-                                            <h1 className="title-text">Land disturbance</h1>
+                                            <h1 className="title-text">{Object.keys(sortedEnvironmentalObject)[4]}</h1>
                                          </div>
                                         
                                         
@@ -2022,8 +2436,8 @@ class MCDAProject extends Component {
                                         
                                     </div>
                                     <div className="sub-criteria-title-container">
-                                        <div className="title-container">
-                                            <h1 className="title-text">Carbon emissions / CO2 footprint</h1>
+                                        <div className="title-container sticky">
+                                            <h1 className="title-text">{Object.keys(sortedEnvironmentalObject)[0]}</h1>
                                         </div>
                                         <div className="title-container">
                                            <input type="text" className="title-input" value={CMvsCM} />
@@ -2043,8 +2457,8 @@ class MCDAProject extends Component {
                                         
                                     </div>
                                     <div className="sub-criteria-title-container">
-                                        <div className="title-container">
-                                        <h1 className="title-text">Construction waste generation</h1>
+                                        <div className="title-container sticky">
+                                        <h1 className="title-text">{Object.keys(sortedEnvironmentalObject)[1]}</h1>
                                         </div>
                                         <div className="title-container">
                                            <input type="text" className="title-input" value={CWGvsCM}  />
@@ -2064,8 +2478,8 @@ class MCDAProject extends Component {
                                         </div>
                                     </div>
                                     <div className="sub-criteria-title-container">
-                                        <div className="title-container">
-                                        <h1 className="title-text">Energy consumption</h1>
+                                        <div className="title-container sticky">
+                                        <h1 className="title-text">{Object.keys(sortedEnvironmentalObject)[2]}</h1>
                                         </div>
                                         <div className="title-container">
                                            <input type="text" className="title-input" value={ECvsCM} />
@@ -2086,8 +2500,8 @@ class MCDAProject extends Component {
                                         </div>
                                     </div>
                                     <div className="sub-criteria-title-container">
-                                        <div className="title-container">
-                                        <h1 className="title-text">Water usage</h1>
+                                        <div className="title-container sticky">
+                                        <h1 className="title-text">{Object.keys(sortedEnvironmentalObject)[3]}</h1>
                                         </div>
                                         <div className="title-container">
                                            <input type="text" className="title-input" value={WUvsCM}/>
@@ -2107,8 +2521,8 @@ class MCDAProject extends Component {
                                     
                                     </div>
                                     <div className="sub-criteria-title-container">
-                                        <div className="title-container">
-                                        <h1 className="title-text">Land disturbance</h1>
+                                        <div className="title-container sticky">
+                                        <h1 className="title-text">{Object.keys(sortedEnvironmentalObject)[4]}</h1>
                                         </div>
                                         <div className="title-container">
                                            <input type="text" className="title-input" value={LDvsCM} />
@@ -2138,15 +2552,15 @@ class MCDAProject extends Component {
                             </div>
                         </div>
                         <div>
-                            <h3>Section 3</h3>
-                            <h1>AHP-Based Performance Rating for Construction Methods</h1>
-                            <p>Rating Scale (1–5 Score): For each of the 15 sub-criteria, rate the performance of each construction method on a scale of 1 to 5, where
+                            <h3 className="section">Section 3</h3>
+                            <h1 className="personal-inf">AHP-Based Performance Rating for Construction Methods</h1>
+                            <p className="text">Rating Scale (1–5 Score): For each of the 15 sub-criteria, rate the performance of each construction method on a scale of 1 to 5, where
                                 1 = Very Poor  |  2 = Poor  |  3 = Moderate  |  4 = Good  |  5 = Very Good
                                 For cost/impact criteria, higher score means BETTER performance (lower cost, lower impact)
                             </p>
                              <div className="construction-methods-main-container">
                                <div className="sub-criteria-title-container">
-                                    <div className="title-container">
+                                    <div className="title-container sticky">
                                        <h1 className="title-text">Construction Methods</h1> 
                                     </div>
                                     <div className="title-container">
@@ -2197,7 +2611,7 @@ class MCDAProject extends Component {
                                     
                                 </div>
                                 <div className="sub-criteria-title-container">
-                                    <div className="title-container">
+                                    <div className="title-container sticky">
                                        <h1 className="title-input">Conventional</h1> 
                                     </div>
                                     <div className="title-container">
@@ -2248,7 +2662,7 @@ class MCDAProject extends Component {
                                     
                                 </div>
                                  <div className="sub-criteria-title-container">
-                                    <div className="title-container">
+                                    <div className="title-container sticky">
                                        <h1 className="title-input">Precast</h1> 
                                     </div>
                                     <div className="title-container">
@@ -2299,7 +2713,7 @@ class MCDAProject extends Component {
                                     
                                 </div>
                                  <div className="sub-criteria-title-container">
-                                    <div className="title-container">
+                                    <div className="title-container sticky">
                                        <h1 className="title-input">Prefabrication</h1> 
                                     </div>
                                     <div className="title-container">
@@ -2350,7 +2764,7 @@ class MCDAProject extends Component {
                                     
                                 </div>
                                  <div className="sub-criteria-title-container">
-                                    <div className="title-container">
+                                    <div className="title-container sticky">
                                        <h1 className="title-input">Modular</h1> 
                                     </div>
                                     <div className="title-container">
@@ -2401,7 +2815,7 @@ class MCDAProject extends Component {
                                     
                                 </div>
                                  <div className="sub-criteria-title-container">
-                                    <div className="title-container">
+                                    <div className="title-container sticky">
                                        <h1 className="title-input">3D Printing</h1> 
                                     </div>
                                     <div className="title-container">
