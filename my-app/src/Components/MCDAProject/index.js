@@ -1603,6 +1603,7 @@ class MCDAProject extends Component {
     });
                    
    };
+   // update all resources
 
    // Economic criteria handle
      handleClickE = (criterion, value) => {
@@ -1827,12 +1828,11 @@ class MCDAProject extends Component {
                             <h1 className="guide-title">Project Guide</h1>
                             <div className="guide-card">
                                 <h3>Guide Details</h3>
-                                <p> <strong>Name:</strong>  Venkatesan Ranganaidu </p>
+                                <p> <strong>Name:</strong> Dr.Venkatesan Ranganaidu,IIT Bombay </p>
                                 <p><strong>Designation:</strong> Professor, Dean of IQAC at NUCS hyderabad </p>
-                                <p><strong>Department:</strong> Contracts ,Claims & Lean Construction </p>
+                                <p><strong>Department:</strong> School of Construction Management,Nicmar Hyderbad  </p>
                             </div>
                             </div>
-                            
                         </div>
                         
                         <h3 className="section">Section 1</h3>
@@ -2863,28 +2863,20 @@ class MCDAProject extends Component {
                                     <div className="title-container">
                                         <input className="title-input" type="text" value={AMvsLD} onChange={this.onMethodAndCriteriaAMvsLD}  />
                                     </div>
-                                    
                                 </div>
-                                
-                                
+                                  
                             </div>
 
                         </div>
-                   
+                
                         <button className="submit-btn" type="submit">
                             Submit
                         </button>
                         {isErr && <p className="error-text">{isErrorMsg}</p>} 
                    
-                        
-                        
-                       
-                    
                     </form>
                 </div>
                 : this.SuccessfulSurveyContainer()
-
-
     }
                
             

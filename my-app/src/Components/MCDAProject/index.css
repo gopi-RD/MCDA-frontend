@@ -522,7 +522,7 @@
   font-weight: 500;
 }
 
-/* Invalid */
+
 .cr-invalid {
   background: #fdecea;
   border-left: 5px solid #e74c3c;
@@ -545,7 +545,7 @@
   z-index: 2;
 }
 
-/* Header styling */
+
 thead th {
   position: sticky;
   top: 0;
@@ -676,7 +676,6 @@ thead th {
   border-radius: 2px;
 }
 
-/* Guide Card */
 .guide-card {
   max-width: 450px;
   margin: 30px auto;
