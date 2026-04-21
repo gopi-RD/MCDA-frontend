@@ -102,7 +102,7 @@ class MCDAProject extends Component {
         this.setState({SDvsPA:event.target.value,PAvsSD:parseFloat(1/event.target.value).toFixed(3),isSDvsPA:false })
     }
     
-    onSocialConsistencyRatioCheck=()=>{
+   /* onSocialConsistencyRatioCheck=()=>{
         const {WSvsWS,WSvsCD,WSvsSD,WSvsJC,WSvsPA,CDvsWS,CDvsCD,CDvsSD,CDvsJC,CDvsPA,JCvsWS,JCvsCD,JCvsJC,JCvsSD,JCvsPA,SDvsWS,SDvsCD,SDvsJC,SDvsSD,SDvsPA,PAvsWS,PAvsCD,PAvsJC,PAvsSD,PAvsPA} = this.state
         
         let sumOfCol1=(parseFloat(WSvsWS)+parseFloat(CDvsWS)+parseFloat(JCvsWS)+parseFloat(SDvsWS)+parseFloat(PAvsWS)).toFixed(3)
@@ -182,7 +182,7 @@ class MCDAProject extends Component {
         let CR=(parseFloat(CI/1.12)).toFixed(3) 
         this.setState({isGenerate:true,CR:CR})
 
-    }
+    } */
 
     // Economic Criteria Pairwise Comparison Handlers will be implemented similarly to the social criteria handlers, ensuring that the reciprocal values are automatically calculated and stored in the state.
         // First row Construction cost vs other 4 economic criteria
@@ -224,7 +224,7 @@ class MCDAProject extends Component {
         this.setState({LCCvsMCC:event.target.value,MCCvsLCC:parseFloat(1/event.target.value).toFixed(3),isLCCvsMCC:false })
     }
 
-    onEconomicConsistencyRatioCheck=()=>{
+   /* onEconomicConsistencyRatioCheck=()=>{
         const {ICvsIC,ICvsCS,ICvsWC,ICvsLCC,ICvsMCC,CSvsIC,CSvsCS,CSvsWC,CSvsLCC,CSvsMCC,WCvsIC,WCvsCS,WCvsWC,WCvsLCC,WCvsMCC,LCCvsIC,LCCvsCS,LCCvsWC,LCCvsLCC,LCCvsMCC,MCCvsIC,MCCvsCS,MCCvsWC,MCCvsLCC,MCCvsMCC} = this.state
         let sumOfCol1=(parseFloat(ICvsIC)+parseFloat(CSvsIC)+parseFloat(WCvsIC)+parseFloat(LCCvsIC)+parseFloat(MCCvsIC)).toFixed(3)
         let sumOfCol2=(parseFloat(ICvsCS)+parseFloat(CSvsCS)+parseFloat(WCvsCS)+parseFloat(LCCvsCS)+parseFloat(MCCvsCS)).toFixed(3)
@@ -292,7 +292,7 @@ class MCDAProject extends Component {
             // Consistency Ratio calculation (Random Index for n=5 is 1.12)
             let CR=(parseFloat(CI/1.12)).toFixed(3) 
             this.setState({isGenerateEconomic:true,CRC:CR})
-    }
+    }*/
 
     // Environmental Criteria onChanges events 
     // first row events
@@ -331,7 +331,7 @@ class MCDAProject extends Component {
     }
 
     // Environmental Criteria Consistency Ratio Check Logic 
-    onEnvironmentalConsistencyRatioCheck=()=>{
+   /* onEnvironmentalConsistencyRatioCheck=()=>{
         const {CMvsCM,CMvsCWG,CMvsEC,CMvsWU,CMvsLD,CWGvsCM,CWGvsCWG,CWGvsEC,CWGvsWU,CWGvsLD,ECvsCM,ECvsCWG,ECvsEC,ECvsWU,ECvsLD,WUvsCM,WUvsCWG,WUvsEC,WUvsWU,WUvsLD,LDvsCM,LDvsCWG,LDvsEC,LDvsWU,LDvsLD} = this.state
         let sumOfCol1=(parseFloat(CMvsCM)+parseFloat(CWGvsCM)+parseFloat(ECvsCM)+parseFloat(WUvsCM)+parseFloat(LDvsCM)).toFixed(3)
         let sumOfCol2=(parseFloat(CMvsCWG)+parseFloat(CWGvsCWG)+parseFloat(ECvsCWG)+parseFloat(WUvsCWG)+parseFloat(LDvsCWG)).toFixed(3)
@@ -401,7 +401,7 @@ class MCDAProject extends Component {
             // Consistency Ratio calculation (Random Index for n=5 is 1.12)
             let CR=(parseFloat(CI/1.12)).toFixed(3) 
             this.setState({isGenerateEnvironmental:true,CRE:CR})
-    }
+    }*/
 
     // Construction Methods Score to Criterias Handlers
     onMethodAndCriteriaCVvsWS=(event)=>{
@@ -1687,18 +1687,18 @@ class MCDAProject extends Component {
                     isDesignationErrMsg,isInstitutionErr,isInstitutionErrMsg,
                     isAreaOfExpertiseErr,isAreaOfExpertiseErrMsg,isExperienceErr,
                     isExperienceErrMsg,isQualificationsErr,isQualificationsErrMsg,
-                    isGenerate,WSvsWS,WSvsCD,WSvsJC,WSvsSD,WSvsPA,CDvsWS,CDvsCD,CDvsJC,
+                WSvsWS,WSvsCD,WSvsJC,WSvsSD,WSvsPA,CDvsWS,CDvsCD,CDvsJC,
                     CDvsSD,CDvsPA,JCvsWS,JCvsCD,JCvsJC,JCvsSD,JCvsPA,SDvsWS,SDvsCD,SDvsJC,
-                    SDvsSD,SDvsPA,PAvsWS,PAvsCD,PAvsJC,PAvsSD,PAvsPA,CR,isWSvsCD,isWSvsJC,
+                    SDvsSD,SDvsPA,PAvsWS,PAvsCD,PAvsJC,PAvsSD,PAvsPA,isWSvsCD,isWSvsJC,
                     isWSvsSD,isWSvsPA,isCDvsJC,isCDvsSD,isCDvsPA,isJCvsSD,isJCvsPA,isSDvsPA,
                     ICvsIC,ICvsCS,ICvsWC,ICvsLCC,ICvsMCC,isICvsCS,isICvsWC,isICvsLCC,isICvsMCC,
                     CSvsIC,CSvsCS,CSvsWC,CSvsLCC,CSvsMCC,isCSvsWC,isCSvsLCC,isCSvsMCC,WCvsIC,
                     WCvsCS,WCvsWC,WCvsLCC,WCvsMCC,isWCvsLCC,isWCvsMCC,LCCvsIC,LCCvsCS,LCCvsWC,
-                    LCCvsLCC,LCCvsMCC,isLCCvsMCC,MCCvsIC,MCCvsCS,MCCvsWC,MCCvsLCC,MCCvsMCC,CRC,
-                isGenerateEconomic,CMvsCM,CMvsCWG,CMvsEC,CMvsWU,CMvsLD,isCMvsCWG,isCMvsEC,isCMvsWU,
+                    LCCvsLCC,LCCvsMCC,isLCCvsMCC,MCCvsIC,MCCvsCS,MCCvsWC,MCCvsLCC,MCCvsMCC,
+                CMvsCM,CMvsCWG,CMvsEC,CMvsWU,CMvsLD,isCMvsCWG,isCMvsEC,isCMvsWU,
                 isCMvsLD,CWGvsCM,CWGvsCWG,CWGvsEC,CWGvsWU,CWGvsLD,isCWGvsEC,isCWGvsWU,isCWGvsLD,ECvsCM,
                 ECvsCWG,ECvsEC,ECvsWU,ECvsLD,isECvsWU,isECvsLD,WUvsCM,WUvsCWG,WUvsEC,WUvsWU,WUvsLD,
-                isWUvsLD,LDvsCM,LDvsCWG,LDvsEC,LDvsWU,LDvsLD,CRE,isGenerateEnvironmental,CVvsWS,CVvsCD,
+                isWUvsLD,LDvsCM,LDvsCWG,LDvsEC,LDvsWU,LDvsLD,CVvsWS,CVvsCD,
                 CVvsJC,CVvsSD,CVvsPA,CVvsIC,CVvsCS,CVvsWC,CVvsLCC,CVvsMCC,CVvsCM,CVvsCWG,CVvsEC,
                 CVvsWU,CVvsLD,PCvsWS,PCvsCD,PCvsJC,PCvsSD,PCvsPA,PCvsIC,PCvsCS,PCvsWC,PCvsLCC,PCvsMCC,PCvsCM,
                 PCvsCWG,PCvsEC,PCvsWU,PCvsLD,PFvsWS,PFvsCD,PFvsJC,PFvsSD,PFvsPA,PFvsIC,PFvsCS,
@@ -2114,10 +2114,7 @@ class MCDAProject extends Component {
                                     </div>
                                   </div> 
                                      
-                                    { /*<button className="generate-button" type="button" onClick={this.onSocialConsistencyRatioCheck} >
-                                    Generate 
-                                    </button>
-                                    {isGenerate && <p className="success-text">{CR<0.1?`The matrix is consistent: ${CR}= ${CR*100}% ,CR < 0.1 or 10%`:`${CR}=${CR*100}% The matrix is not consistent :Revise the ratings,CR < 0.1 or 10%`}</p>} */}
+                                    
                                 </div>
                             </div>
                             <div>
@@ -2301,10 +2298,7 @@ class MCDAProject extends Component {
                                      
                                   </div>  
                                     
-                                   {/* <button className="generate-button" type="button" onClick={this.onEconomicConsistencyRatioCheck} >
-                                    Generate 
-                                    </button>
-                                    {isGenerateEconomic && <p className="success-text">{CRC<0.1?`The matrix is consistent: ${CRC}= ${CRC*100}% ,CR < 0.1 or 10%`:`${CRC}=${CRC*100}% The matrix is not consistent :Revise the ratings,CR < 0.1 or 10%`}</p>} */}
+                                   
                                    
                                 </div>   
                             </div>
@@ -2495,10 +2489,7 @@ class MCDAProject extends Component {
                                     </div>
                                   </div>  
                                   
-                                   {/* <button className="generate-button" type="button" onClick={this.onEnvironmentalConsistencyRatioCheck} >
-                                    Generate 
-                                    </button>
-                                    {isGenerateEnvironmental && <p className="success-text">{CRE<0.1?`The matrix is consistent: ${CRE}= ${CRE*100}% ,CR < 0.1 or 10%`:`${CRE}=${CRE*100}% The matrix is not consistent :Revise the ratings,CR < 0.1 or 10%`}</p>}*/}
+                                  
                                 </div>
                             </div>
                         </div>
