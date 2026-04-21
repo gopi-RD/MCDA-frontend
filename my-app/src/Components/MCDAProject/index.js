@@ -1828,7 +1828,7 @@ class MCDAProject extends Component {
                             <h1 className="guide-title">Project Guide</h1>
                             <div className="guide-card">
                                 <h3>Guide Details</h3>
-                                <p> <strong>Name:</strong> Dr.Venkatesan Ranganaidu,IIT Bombay </p>
+                                <p> <strong>Name:</strong> Dr.Venkatesan Ranganaidu,IIT Madras </p>
                                 <p><strong>Designation:</strong> Professor, Dean of IQAC at NUCS hyderabad </p>
                                 <p><strong>Department:</strong> School of Construction Management,Nicmar Hyderbad  </p>
                             </div>
@@ -1982,26 +1982,7 @@ class MCDAProject extends Component {
 
                                         {error && <div className="error">{error}</div>}
                                     </div>
-                                <div>
-                                    <div className="cr-container">
-                                    <h2 className="cr-title">⚙️ Consistency Check</h2>
-
-                                    <p className="cr-note">
-                                        After entering all values, click on the <span>Generate</span> button.
-                                    </p>
-
-                                    <div className="cr-rules">
-                                        <p className="cr-valid">
-                                        ✔ If Consistency Ratio (CR) &lt; 0.10 (10%), you can proceed to submit.
-                                        </p>
-                                        <p className="cr-invalid">
-                                        ❌ If CR ≥ 0.10, please revise your inputs to improve consistency.
-                                        </p>
-                                    </div>
-                                    </div>
-                                    <span className="yellow-box"></span>
-                                    <p className="yellow-box-text">Yellow Color place only enter values 1-9</p>
-                                </div>
+                               
                                 <div>
                                   <div className="construction-methods-main-container">
                                     <div className="sub-criteria-title-container">
@@ -2133,10 +2114,10 @@ class MCDAProject extends Component {
                                     </div>
                                   </div> 
                                      
-                                    <button className="generate-button" type="button" onClick={this.onSocialConsistencyRatioCheck} >
+                                    { /*<button className="generate-button" type="button" onClick={this.onSocialConsistencyRatioCheck} >
                                     Generate 
                                     </button>
-                                    {isGenerate && <p className="success-text">{CR<0.1?`The matrix is consistent: ${CR}= ${CR*100}% ,CR < 0.1 or 10%`:`${CR}=${CR*100}% The matrix is not consistent :Revise the ratings,CR < 0.1 or 10%`}</p>}
+                                    {isGenerate && <p className="success-text">{CR<0.1?`The matrix is consistent: ${CR}= ${CR*100}% ,CR < 0.1 or 10%`:`${CR}=${CR*100}% The matrix is not consistent :Revise the ratings,CR < 0.1 or 10%`}</p>} */}
                                 </div>
                             </div>
                             <div>
@@ -2185,22 +2166,7 @@ class MCDAProject extends Component {
 
                                         {errorE && <div className="error">{errorE}</div>}
                                     </div>
-                                <div className="cr-container">
-                                    <h2 className="cr-title">⚙️ Consistency Check</h2>
-
-                                    <p className="cr-note">
-                                        After entering all values, click on the <span>Generate</span> button.
-                                    </p>
-
-                                    <div className="cr-rules">
-                                        <p className="cr-valid">
-                                        ✔ If Consistency Ratio (CR) &lt; 0.10 (10%), you can proceed to submit.
-                                        </p>
-                                        <p className="cr-invalid">
-                                        ❌ If CR ≥ 0.10, please revise your inputs to improve consistency.
-                                        </p>
-                                    </div>
-                                    </div>
+                                
                                 <div>
                                     <span className="green-box"></span>
                                     <p className="green-box-text">Green Color place only enter values 1-9</p>
@@ -2335,10 +2301,10 @@ class MCDAProject extends Component {
                                      
                                   </div>  
                                     
-                                    <button className="generate-button" type="button" onClick={this.onEconomicConsistencyRatioCheck} >
+                                   {/* <button className="generate-button" type="button" onClick={this.onEconomicConsistencyRatioCheck} >
                                     Generate 
                                     </button>
-                                    {isGenerateEconomic && <p className="success-text">{CRC<0.1?`The matrix is consistent: ${CRC}= ${CRC*100}% ,CR < 0.1 or 10%`:`${CRC}=${CRC*100}% The matrix is not consistent :Revise the ratings,CR < 0.1 or 10%`}</p>}
+                                    {isGenerateEconomic && <p className="success-text">{CRC<0.1?`The matrix is consistent: ${CRC}= ${CRC*100}% ,CR < 0.1 or 10%`:`${CRC}=${CRC*100}% The matrix is not consistent :Revise the ratings,CR < 0.1 or 10%`}</p>} */}
                                    
                                 </div>   
                             </div>
@@ -2388,22 +2354,7 @@ class MCDAProject extends Component {
 
                                         {errorEv && <div className="error">{errorEv}</div>}
                                     </div>
-                                <div className="cr-container">
-                                    <h2 className="cr-title">⚙️ Consistency Check</h2>
-
-                                    <p className="cr-note">
-                                        After entering all values, click on the <span>Generate</span> button.
-                                    </p>
-
-                                    <div className="cr-rules">
-                                        <p className="cr-valid">
-                                        ✔ If Consistency Ratio (CR) &lt; 0.10 (10%), you can proceed to submit.
-                                        </p>
-                                        <p className="cr-invalid">
-                                        ❌ If CR ≥ 0.10, please revise your inputs to improve consistency.
-                                        </p>
-                                    </div>
-                                    </div>
+                                
                                 <div>
                                     <span className="blue-box"></span>
                                     <p className="blue-box-text">Blue Color place only enter values 1-9</p>
@@ -2544,10 +2495,10 @@ class MCDAProject extends Component {
                                     </div>
                                   </div>  
                                   
-                                    <button className="generate-button" type="button" onClick={this.onEnvironmentalConsistencyRatioCheck} >
+                                   {/* <button className="generate-button" type="button" onClick={this.onEnvironmentalConsistencyRatioCheck} >
                                     Generate 
                                     </button>
-                                    {isGenerateEnvironmental && <p className="success-text">{CRE<0.1?`The matrix is consistent: ${CRE}= ${CRE*100}% ,CR < 0.1 or 10%`:`${CRE}=${CRE*100}% The matrix is not consistent :Revise the ratings,CR < 0.1 or 10%`}</p>}
+                                    {isGenerateEnvironmental && <p className="success-text">{CRE<0.1?`The matrix is consistent: ${CRE}= ${CRE*100}% ,CR < 0.1 or 10%`:`${CRE}=${CRE*100}% The matrix is not consistent :Revise the ratings,CR < 0.1 or 10%`}</p>}*/}
                                 </div>
                             </div>
                         </div>
